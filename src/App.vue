@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const SEARCH_URL =
-  'https://www.google.com/search?q=%E6%8A%80%E8%A1%93%E8%80%85%E5%80%AB%E7%90%86'
+const SEARCH_URL = 'https://www.google.com/search?q=%E6%8A%80%E8%A1%93%E8%80%85%E5%80%AB%E7%90%86'
 const DISCORD_URL = 'https://discord.gg/evex'
 const GITHUB_URL = 'https://github.com/EdamAme-x/rinri'
 
@@ -34,13 +33,7 @@ const X_SHARE_URL =
           rel="noopener noreferrer"
           aria-label="Xで共有する"
         >
-          <svg
-            class="x-icon"
-            viewBox="0 0 24 24"
-            width="18"
-            height="18"
-            aria-hidden="true"
-          >
+          <svg class="x-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <path
               fill="currentColor"
               d="M18.244 2H21.5l-7.5 8.57L23 22h-6.844l-5.36-6.99L4.6 22H1.34l8.02-9.166L1 2h7.02l4.83 6.39L18.244 2Zm-1.2 18h1.86L7.04 4H5.07L17.044 20Z"
@@ -113,7 +106,10 @@ const X_SHARE_URL =
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.5) inset,
     0 10px 30px -10px rgba(129, 140, 248, 0.6);
-  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    filter 150ms ease;
 }
 
 .cta:hover {
@@ -149,7 +145,10 @@ const X_SHARE_URL =
   color: #ffffff;
   background: #000000;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease;
 }
 
 .share:hover {
@@ -189,7 +188,9 @@ const X_SHARE_URL =
   text-decoration: none;
   border-bottom: 1px dashed currentColor;
   padding-bottom: 1px;
-  transition: color 150ms ease, border-color 150ms ease;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
 }
 
 .link:hover {

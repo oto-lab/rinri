@@ -1,7 +1,7 @@
 name: 🐛 Bug report
 description: Report a bug on the rinri site or build
-title: "bug: "
-labels: ["bug", "triage"]
+title: 'bug: '
+labels: ['bug', 'triage']
 body:
   - type: markdown
     attributes:

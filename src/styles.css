@@ -5,8 +5,16 @@
 
   color-scheme: dark light;
   font-family:
-    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-    'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+    'Inter',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    'Hiragino Sans',
+    'Noto Sans JP',
+    'Yu Gothic',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -35,8 +43,7 @@ body {
 body {
   background:
     radial-gradient(1200px 600px at 80% -10%, rgba(129, 140, 248, 0.18), transparent 60%),
-    radial-gradient(800px 500px at 0% 110%, rgba(244, 114, 182, 0.14), transparent 60%),
-    var(--bg);
+    radial-gradient(800px 500px at 0% 110%, rgba(244, 114, 182, 0.14), transparent 60%), var(--bg);
   color: var(--fg);
   line-height: 1.6;
 }
