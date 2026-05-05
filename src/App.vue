@@ -4,6 +4,7 @@ import { XIcon, DiscordIcon, GitHubIcon } from 'vue3-simple-icons'
 
 const SEARCH_URL = 'https://www.google.com/search?q=%E6%8A%80%E8%A1%93%E8%80%85%E5%80%AB%E7%90%86'
 const ACM_CODE_URL = 'https://www.acm.org/binaries/content/assets/code-of-ethics/se-code-jpn.pdf'
+const ACM_CODE_MD_URL = 'https://github.com/EdamAme-x/rinri/blob/main/docs/se-code-jpn.md'
 const DISCORD_URL = 'https://discord.gg/evex'
 const GITHUB_URL = 'https://github.com/EdamAme-x/rinri'
 
@@ -45,6 +46,14 @@ const X_SHARE_URL =
       <p class="reference">
         <a class="link" :href="ACM_CODE_URL" target="_blank" rel="noopener noreferrer">
           ACM ソフトウェアエンジニア倫理綱領
+        </a>
+        <a
+          class="link reference-md"
+          :href="ACM_CODE_MD_URL"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ( Markdown版 )
         </a>
       </p>
     </section>
@@ -227,6 +236,11 @@ const X_SHARE_URL =
   font-size: 0.8125rem;
   color: var(--muted);
   letter-spacing: 0.01em;
+}
+
+.reference-md {
+  margin-left: 0.4rem;
+  opacity: 0.85;
 }
 
 .footer {
