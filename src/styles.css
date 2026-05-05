@@ -75,8 +75,16 @@ body::after {
 
 body::before {
   background-image:
-    linear-gradient(to right, var(--grid-line) var(--grid-line-width), transparent var(--grid-line-width)),
-    linear-gradient(to bottom, var(--grid-line) var(--grid-line-width), transparent var(--grid-line-width));
+    linear-gradient(
+      to right,
+      var(--grid-line) var(--grid-line-width),
+      transparent var(--grid-line-width)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--grid-line) var(--grid-line-width),
+      transparent var(--grid-line-width)
+    );
   background-size: var(--grid-size) var(--grid-size);
   background-position: center center;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 35%, transparent 85%);
@@ -86,8 +94,16 @@ body::before {
 /* A second, sharper grid concentrated in the center for a 3D-ish focal point */
 body::after {
   background-image:
-    linear-gradient(to right, var(--grid-line-strong) var(--grid-line-width), transparent var(--grid-line-width)),
-    linear-gradient(to bottom, var(--grid-line-strong) var(--grid-line-width), transparent var(--grid-line-width));
+    linear-gradient(
+      to right,
+      var(--grid-line-strong) var(--grid-line-width),
+      transparent var(--grid-line-width)
+    ),
+    linear-gradient(
+      to bottom,
+      var(--grid-line-strong) var(--grid-line-width),
+      transparent var(--grid-line-width)
+    );
   background-size: var(--grid-size) var(--grid-size);
   background-position: center center;
   -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 0%, transparent 38%);
