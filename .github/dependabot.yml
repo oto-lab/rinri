@@ -3,31 +3,41 @@ updates:
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: weekly
+      interval: monthly
       day: monday
       time: '06:00'
       timezone: Asia/Tokyo
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     versioning-strategy: increase
     commit-message:
       prefix: 'chore(deps)'
       include: scope
     labels:
       - dependencies
+    # Skip major bumps for everything except security patches.
+    # Major upgrades for tooling (eslint, lint-staged, commitlint, etc.) tend
+    # to ship breaking changes that don't matter for a single-page site.
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
     groups:
-      vue:
+      # Vue and TypeScript are tightly coupled (e.g. @vue/tsconfig requires
+      # newer TS for options like `libReplacement`), so update them together.
+      vue-typescript:
         patterns:
           - 'vue'
           - '@vue/*'
           - '@vitejs/plugin-vue'
           - 'vue-tsc'
+          - 'typescript'
+          - '@types/*'
       vite:
         patterns:
           - 'vite'
-      typescript:
-        patterns:
-          - 'typescript'
-          - '@types/*'
+          - 'vite-ssg'
+          - '@unhead/*'
+          - 'unhead'
       lint:
         patterns:
           - 'eslint*'
@@ -36,16 +46,32 @@ updates:
           - 'prettier'
           - 'eslint-plugin-*'
           - 'eslint-config-*'
+          - 'typescript-eslint'
+          - 'vue-eslint-parser'
+      hooks:
+        patterns:
+          - 'husky'
+          - 'lint-staged'
+          - '@commitlint/*'
 
   - package-ecosystem: github-actions
     directory: '/'
     schedule:
-      interval: weekly
+      interval: monthly
       day: monday
       time: '06:00'
       timezone: Asia/Tokyo
+    open-pull-requests-limit: 3
     commit-message:
       prefix: 'ci(deps)'
     labels:
       - ci
       - dependencies
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
+    groups:
+      actions:
+        patterns:
+          - '*'

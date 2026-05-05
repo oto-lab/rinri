@@ -30,6 +30,9 @@ export default [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
+      // ESLint cannot see references inside <template>, so script-setup
+      // constants are mis-flagged as unused.
+      'no-useless-assignment': 'off',
     },
   },
   prettier,
