@@ -61,6 +61,8 @@ const X_SHARE_URL =
         <DiscordIcon :size="20" aria-hidden="true" />
       </a>
 
+      <span class="sep" aria-hidden="true">/</span>
+
       <a
         class="icon-link"
         :href="GITHUB_URL"
@@ -307,10 +309,6 @@ const X_SHARE_URL =
   .footer {
     font-size: 0.8125rem;
     padding-top: 1.25rem;
-  }
-
-  .sep {
-    display: none;
   }
 }
 
