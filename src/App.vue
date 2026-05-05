@@ -19,7 +19,6 @@ const X_SHARE_URL =
     <section class="hero">
       <p class="eyebrow">Engineering Ethics</p>
       <h1 class="title">技術者倫理を守ろう</h1>
-      <p class="lead">エンジニアとしての誠実さを、今日も。</p>
 
       <div class="actions">
         <a class="btn btn-primary" :href="SEARCH_URL" target="_blank" rel="noopener noreferrer">
@@ -93,12 +92,6 @@ const X_SHARE_URL =
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--fg);
-}
-
-.lead {
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(0.95rem, 2.2vw, 1.0625rem);
 }
 
 .actions {
