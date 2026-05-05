@@ -89,13 +89,32 @@ const X_SHARE_URL =
 
 .title {
   margin: 0;
-  font-size: clamp(1.6rem, 7.5vw, 3.5rem);
+  font-size: clamp(1.6rem, 7.5vw, 3.75rem);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--fg);
   word-break: keep-all;
   overflow-wrap: anywhere;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  }
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin: 0 0.6rem;
+  opacity: 0.5;
 }
 
 .actions {

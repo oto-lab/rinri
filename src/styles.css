@@ -5,6 +5,13 @@
   --border: #e5e5e5;
   --hairline: #ededed;
 
+  /* grid backdrop */
+  --grid-line: rgba(10, 10, 10, 0.08);
+  --grid-line-strong: rgba(10, 10, 10, 0.14);
+  --grid-size: 56px;
+  --grid-line-width: 1px;
+  --vignette: rgba(10, 10, 10, 0.04);
+
   color-scheme: light dark;
   font-family:
     'Inter',
@@ -28,6 +35,10 @@
     --muted: #a3a3a3;
     --border: #262626;
     --hairline: #1a1a1a;
+
+    --grid-line: rgba(245, 245, 245, 0.07);
+    --grid-line-strong: rgba(245, 245, 245, 0.14);
+    --vignette: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -45,12 +56,47 @@ body {
 }
 
 body {
+  position: relative;
   background: var(--bg);
   color: var(--fg);
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Grid backdrop with radial mask — gives a sense of depth */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  background-image:
+    linear-gradient(to right, var(--grid-line) var(--grid-line-width), transparent var(--grid-line-width)),
+    linear-gradient(to bottom, var(--grid-line) var(--grid-line-width), transparent var(--grid-line-width));
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center center;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 35%, transparent 85%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 35%, transparent 85%);
+}
+
+/* A second, sharper grid concentrated in the center for a 3D-ish focal point */
+body::after {
+  background-image:
+    linear-gradient(to right, var(--grid-line-strong) var(--grid-line-width), transparent var(--grid-line-width)),
+    linear-gradient(to bottom, var(--grid-line-strong) var(--grid-line-width), transparent var(--grid-line-width));
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center center;
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 0%, transparent 38%);
+  mask-image: radial-gradient(circle at 50% 45%, #000 0%, transparent 38%);
 }
 
 #app {
+  position: relative;
+  z-index: 1;
   min-height: 100dvh;
 }
 
@@ -67,4 +113,26 @@ a {
 ::selection {
   background: var(--fg);
   color: var(--bg);
+}
+
+@media (max-width: 480px) {
+  :root {
+    --grid-size: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::after {
+    animation: pulse 8s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
 }
