@@ -27,27 +27,6 @@ const X_SHARE_URL =
           <span class="arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="btn btn-ghost" :href="ACM_CODE_URL" target="_blank" rel="noopener noreferrer">
-          <svg
-            class="doc-icon"
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="8" y1="13" x2="16" y2="13" />
-            <line x1="8" y1="17" x2="13" y2="17" />
-          </svg>
-          <span>ACM 倫理綱領</span>
-        </a>
-
         <a
           class="btn btn-ghost"
           :href="X_SHARE_URL"
@@ -64,6 +43,12 @@ const X_SHARE_URL =
           <span>Xで広める</span>
         </a>
       </div>
+
+      <p class="reference">
+        <a class="link" :href="ACM_CODE_URL" target="_blank" rel="noopener noreferrer">
+          ACM ソフトウェアエンジニア倫理綱領
+        </a>
+      </p>
     </section>
 
     <footer class="footer">
@@ -213,10 +198,16 @@ const X_SHARE_URL =
   transform: translateX(2px);
 }
 
-.x-icon,
-.doc-icon {
+.x-icon {
   display: block;
   flex-shrink: 0;
+}
+
+.reference {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  letter-spacing: 0.01em;
 }
 
 .footer {
