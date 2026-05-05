@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://技術者倫理.com/sitemap.xml

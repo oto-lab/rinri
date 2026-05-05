@@ -1,0 +1,56 @@
+:root {
+  --bg: #0b1220;
+  --fg: #e2e8f0;
+  --muted: #94a3b8;
+
+  color-scheme: dark light;
+  font-family:
+    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8fafc;
+    --fg: #0f172a;
+    --muted: #475569;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(129, 140, 248, 0.18), transparent 60%),
+    radial-gradient(800px 500px at 0% 110%, rgba(244, 114, 182, 0.14), transparent 60%),
+    var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+#app {
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 3px;
+  border-radius: 6px;
+}

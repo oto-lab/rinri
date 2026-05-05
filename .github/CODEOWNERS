@@ -1,0 +1,6 @@
+# Default owner for everything in the repo
+*       @EdamAme-x
+
+# Workflow / infra changes get extra attention
+/.github/        @EdamAme-x
+/vite.config.ts  @EdamAme-x
