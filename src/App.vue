@@ -61,7 +61,9 @@ const X_SHARE_URL =
   min-height: 100dvh;
   display: grid;
   grid-template-rows: 1fr auto;
-  padding: 2rem 1.25rem;
+  padding: 2rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+  padding-left: max(1.25rem, env(safe-area-inset-left));
+  padding-right: max(1.25rem, env(safe-area-inset-right));
   gap: 2rem;
   max-width: 720px;
   margin: 0 auto;
@@ -78,7 +80,7 @@ const X_SHARE_URL =
 
 .eyebrow {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -87,11 +89,13 @@ const X_SHARE_URL =
 
 .title {
   margin: 0;
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(1.6rem, 7.5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--fg);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .actions {
@@ -101,47 +105,63 @@ const X_SHARE_URL =
   justify-content: center;
   gap: 0.625rem;
   margin-top: 1.25rem;
+  width: 100%;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
   font-weight: 500;
   font-size: 0.9375rem;
   text-decoration: none;
   border: 1px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition:
-    background-color 120ms ease,
-    border-color 120ms ease,
-    color 120ms ease,
-    transform 120ms ease;
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .btn-primary {
   background: var(--fg);
   color: var(--bg);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 4px 12px -4px rgba(0, 0, 0, 0.18);
 }
 
 .btn-primary:hover {
   background: color-mix(in srgb, var(--fg) 88%, var(--bg));
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 8px 18px -6px rgba(0, 0, 0, 0.25);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: var(--bg);
   color: var(--fg);
   border-color: var(--border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .btn-ghost:hover {
   background: var(--hairline);
   border-color: var(--fg);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.15);
 }
 
 .arrow {
@@ -161,26 +181,71 @@ const X_SHARE_URL =
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.5rem 0.75rem;
   flex-wrap: wrap;
   padding: 1.5rem 0 0.5rem;
   border-top: 1px solid var(--hairline);
   color: var(--muted);
   font-size: 0.875rem;
+  text-align: center;
 }
 
 .link {
   color: inherit;
   text-decoration: none;
-  transition: color 120ms ease;
+  border-bottom: 1px dashed currentColor;
+  padding-bottom: 1px;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
 }
 
 .link:hover {
   color: var(--fg);
+  border-bottom-color: currentColor;
 }
 
 .sep {
   opacity: 0.5;
   user-select: none;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1.5rem 1rem calc(1rem + env(safe-area-inset-bottom));
+    gap: 1.25rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .footer {
+    font-size: 0.8125rem;
+    padding-top: 1.25rem;
+  }
+
+  .sep {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .btn-primary:hover,
+  .btn-ghost:hover {
+    transform: none;
+  }
+  .btn-primary:hover .arrow {
+    transform: none;
+  }
 }
 </style>
