@@ -25,6 +25,12 @@ const X_SHARE_URL =
       <p class="eyebrow">Engineering Ethics</p>
       <h1 class="title">技術者倫理を守ろう</h1>
 
+      <p class="sr-only">
+        技術者倫理.com は、ソフトウェアエンジニアとしての倫理 ― ACM/IEEE-CS
+        が公開しているソフトウェア・エンジニアリングのための 倫理ならびに専門職実務綱領 (第 5.2 版)
+        ― を、 原典の日本語版 PDF と読みやすい Markdown 版で紹介するページです。
+      </p>
+
       <div class="actions">
         <a class="btn btn-primary" :href="SEARCH_URL" target="_blank" rel="noopener noreferrer">
           <span>技術者倫理について調べる</span>
@@ -224,6 +230,18 @@ const X_SHARE_URL =
 .btn :deep(svg) {
   display: block;
   flex-shrink: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .x-icon {

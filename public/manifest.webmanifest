@@ -1,0 +1,28 @@
+{
+  "name": "技術者倫理を守ろう",
+  "short_name": "技術者倫理",
+  "description": "技術者倫理を守ろう。ソフトウェアエンジニアのための倫理綱領を、原典 PDF と Markdown 版で紹介します。",
+  "lang": "ja",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
