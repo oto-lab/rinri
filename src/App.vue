@@ -353,30 +353,20 @@ async function copySnippet() {
 }
 
 .badge-preview {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.5rem;
-  padding: 1.1rem 1.35rem;
-  background: #0a0a0a;
-  border: 1px solid #0a0a0a;
-  border-radius: 14px;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.18),
-    0 8px 20px -4px rgba(0, 0, 0, 0.22),
-    0 24px 50px -14px rgba(0, 0, 0, 0.35);
+  display: inline-block;
+  margin-top: 0.25rem;
+  border-radius: 4px;
   -webkit-tap-highlight-color: transparent;
   transition:
     transform 150ms ease,
-    box-shadow 150ms ease;
+    filter 150ms ease;
+  /* light mode: grey shadow under the badge */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
 }
 
 .badge-preview:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.22),
-    0 14px 28px -6px rgba(0, 0, 0, 0.3),
-    0 32px 70px -16px rgba(0, 0, 0, 0.45);
+  transform: translateY(-1px);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
 }
 
 .badge-preview:active {
@@ -390,19 +380,12 @@ async function copySnippet() {
 }
 
 @media (prefers-color-scheme: dark) {
+  /* dark mode: white glow so the badge separates from the dark page */
   .badge-preview {
-    background: #f5f5f5;
-    border-color: #f5f5f5;
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.5),
-      0 8px 20px -4px rgba(0, 0, 0, 0.6),
-      0 24px 50px -14px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.18));
   }
   .badge-preview:hover {
-    box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.55),
-      0 14px 28px -6px rgba(0, 0, 0, 0.7),
-      0 32px 70px -16px rgba(0, 0, 0, 0.9);
+    filter: drop-shadow(0 8px 20px rgba(255, 255, 255, 0.28));
   }
 }
 
