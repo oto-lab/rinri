@@ -353,21 +353,57 @@ async function copySnippet() {
 }
 
 .badge-preview {
-  display: inline-block;
-  margin-top: 0.25rem;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 1.1rem 1.35rem;
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    0 8px 20px -4px rgba(0, 0, 0, 0.22),
+    0 24px 50px -14px rgba(0, 0, 0, 0.35);
   -webkit-tap-highlight-color: transparent;
-  transition: transform 150ms ease;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .badge-preview:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.22),
+    0 14px 28px -6px rgba(0, 0, 0, 0.3),
+    0 32px 70px -16px rgba(0, 0, 0, 0.45);
+}
+
+.badge-preview:active {
+  transform: translateY(0);
 }
 
 .badge-preview img {
   display: block;
   height: 28px;
   width: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-preview {
+    background: #f5f5f5;
+    border-color: #f5f5f5;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      0 8px 20px -4px rgba(0, 0, 0, 0.6),
+      0 24px 50px -14px rgba(0, 0, 0, 0.8);
+  }
+  .badge-preview:hover {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.55),
+      0 14px 28px -6px rgba(0, 0, 0, 0.7),
+      0 32px 70px -16px rgba(0, 0, 0, 0.9);
+  }
 }
 
 .snippet {
@@ -400,7 +436,7 @@ async function copySnippet() {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  padding: 0.3rem 1.6rem 0.3rem 0.7rem;
+  padding: 0.5rem 1.75rem 0.5rem 0.8rem;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--bg);
@@ -435,8 +471,8 @@ async function copySnippet() {
 .snippet-copy {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.7rem;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--bg);
