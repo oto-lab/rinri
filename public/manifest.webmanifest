@@ -1,7 +1,7 @@
 {
   "name": "技術者倫理を守ろう",
   "short_name": "技術者倫理",
-  "description": "技術者倫理を守ろう。ソフトウェアエンジニアのための倫理綱領を、原典 PDF と Markdown 版で紹介します。",
+  "description": "技術者倫理を守ろう。",
   "lang": "ja",
   "start_url": "/",
   "scope": "/",
