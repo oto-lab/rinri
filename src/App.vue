@@ -338,14 +338,14 @@ async function copySnippet() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.85rem;
-  padding: 1.5rem 0 0;
+  gap: 1.5rem;
+  padding: 2.5rem 0 1rem;
   border-top: 1px solid var(--hairline);
   text-align: center;
 }
 
 .badge-heading {
-  margin: 0;
+  margin: 0 0 0.25rem;
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -354,7 +354,7 @@ async function copySnippet() {
 
 .badge-preview {
   display: inline-block;
-  margin-top: 0.25rem;
+  margin: 0.5rem 0;
   border-radius: 4px;
   -webkit-tap-highlight-color: transparent;
   transition:
@@ -404,7 +404,8 @@ async function copySnippet() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.45rem 0.55rem 0.45rem 0.65rem;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
   border-bottom: 1px solid var(--border);
   background: var(--code-head-bg);
 }
@@ -486,11 +487,11 @@ async function copySnippet() {
 
 .snippet-code {
   margin: 0;
-  padding: 0.85rem 0.95rem;
+  padding: 1.1rem 1.1rem;
   font-family:
     ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.78rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--fg);
   white-space: pre-wrap;
   word-break: break-all;
