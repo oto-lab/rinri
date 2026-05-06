@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ArrowRight, Check, Copy } from 'lucide-vue-next'
+import { ArrowRight, Check, ChevronRight, Copy } from 'lucide-vue-next'
 import { XIcon, DiscordIcon, GitHubIcon } from 'vue3-simple-icons'
 
 const SEARCH_URL = 'https://www.google.com/search?q=%E6%8A%80%E8%A1%93%E8%80%85%E5%80%AB%E7%90%86'
@@ -106,35 +106,42 @@ async function copySnippet() {
       </p>
     </section>
 
-    <section class="badge-section" aria-labelledby="badge-heading">
-      <h2 id="badge-heading" class="badge-heading">README に貼れるバッジ</h2>
+    <section class="badge-section">
+      <details class="badge-details">
+        <summary class="badge-summary">
+          <ChevronRight class="badge-summary-caret" :size="14" aria-hidden="true" />
+          <span>README に貼れるバッジ</span>
+        </summary>
 
-      <a class="badge-preview" :href="SITE_URL" rel="noopener noreferrer">
-        <img :src="BADGE_IMG_URL" alt="技術者倫理 遵守済み" width="200" height="28" />
-      </a>
+        <div class="badge-body">
+          <a class="badge-preview" :href="SITE_URL" rel="noopener noreferrer">
+            <img :src="BADGE_IMG_URL" alt="技術者倫理 遵守済み" width="200" height="28" />
+          </a>
 
-      <div class="snippet">
-        <div class="snippet-head">
-          <label class="snippet-select">
-            <select v-model="snippetKind" aria-label="フォーマット">
-              <option value="md">Markdown</option>
-              <option value="html">HTML</option>
-            </select>
-            <span class="snippet-select-caret" aria-hidden="true">▾</span>
-          </label>
-          <button
-            type="button"
-            class="snippet-copy"
-            :aria-label="copied ? 'コピーしました' : 'コピー'"
-            @click="copySnippet"
-          >
-            <Check v-if="copied" :size="14" aria-hidden="true" />
-            <Copy v-else :size="14" aria-hidden="true" />
-            <span>{{ copied ? 'Copied' : 'Copy' }}</span>
-          </button>
+          <div class="snippet">
+            <div class="snippet-head">
+              <label class="snippet-select">
+                <select v-model="snippetKind" aria-label="フォーマット">
+                  <option value="md">Markdown</option>
+                  <option value="html">HTML</option>
+                </select>
+                <span class="snippet-select-caret" aria-hidden="true">▾</span>
+              </label>
+              <button
+                type="button"
+                class="snippet-copy"
+                :aria-label="copied ? 'コピーしました' : 'コピー'"
+                @click="copySnippet"
+              >
+                <Check v-if="copied" :size="14" aria-hidden="true" />
+                <Copy v-else :size="14" aria-hidden="true" />
+                <span>{{ copied ? 'Copied' : 'Copy' }}</span>
+              </button>
+            </div>
+            <pre class="snippet-code"><code>{{ snippets[snippetKind] }}</code></pre>
+          </div>
         </div>
-        <pre class="snippet-code"><code>{{ snippets[snippetKind] }}</code></pre>
-      </div>
+      </details>
     </section>
 
     <footer class="footer">
@@ -338,18 +345,66 @@ async function copySnippet() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  padding: 2.5rem 0 1rem;
+  padding: 1.25rem 0 0.5rem;
   border-top: 1px solid var(--hairline);
   text-align: center;
 }
 
-.badge-heading {
-  margin: 0 0 0.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.badge-details {
+  width: 100%;
+  max-width: 560px;
+}
+
+.badge-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.badge-summary::-webkit-details-marker {
+  display: none;
+}
+
+.badge-summary:hover {
   color: var(--fg);
+  border-color: var(--fg);
+}
+
+.badge-summary-caret {
+  transition: transform 200ms ease;
+}
+
+.badge-details[open] > .badge-summary {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.badge-details[open] > .badge-summary .badge-summary-caret {
+  transform: rotate(90deg);
+}
+
+.badge-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
 }
 
 .badge-preview {
