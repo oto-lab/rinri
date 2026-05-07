@@ -2,4 +2,16 @@ import { ViteSSG } from 'vite-ssg/single-page'
 import App from './App.vue'
 import './styles.css'
 
-export const createApp = ViteSSG(App)
+export const createApp = ViteSSG(App, ({ isClient }) => {
+  if (!isClient) return
+
+  const banner = '%c⚠ 開発者タブを閉じてください'
+  const sub = '%cソースを覗く前に、まず技術者倫理を守りましょう。\n— 技術者倫理.com'
+
+  // eslint-disable-next-line no-console
+  console.log(
+    banner + '\n' + sub,
+    'color:#ff3b3b;font-size:28px;font-weight:800;letter-spacing:0.04em;',
+    'color:#888;font-size:13px;line-height:1.6;',
+  )
+})
