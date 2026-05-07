@@ -8,3 +8,5 @@
 
 Discord に貼る用
 `[技術者倫理.com](https://xn--zwqt06btym6jly7j.com)`
+
+Skills: https://github.com/numekudi/engineering-ethics

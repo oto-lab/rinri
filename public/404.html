@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="noindex,follow" />
+    <title>倫理違反 — 技術者倫理を守ろう</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #0a0a0a;
+        --muted: #6b6b6b;
+        --border: #e5e5e5;
+        --hairline: #ededed;
+        --grid-line: rgba(10, 10, 10, 0.04);
+        --grid-line-strong: rgba(10, 10, 10, 0.07);
+        --grid-size: 56px;
+        color-scheme: light dark;
+        font-family:
+          'Inter',
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          'Hiragino Sans',
+          'Noto Sans JP',
+          'Yu Gothic',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0a0a0a;
+          --fg: #f5f5f5;
+          --muted: #a3a3a3;
+          --border: #262626;
+          --hairline: #1a1a1a;
+          --grid-line: rgba(245, 245, 245, 0.035);
+          --grid-line-strong: rgba(245, 245, 245, 0.07);
+        }
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+      }
+      body {
+        position: relative;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      body::before,
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      body::before {
+        background-image:
+          linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+        background-size: var(--grid-size) var(--grid-size);
+        background-position: center center;
+        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 35%, transparent 85%);
+        mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 35%, transparent 85%);
+      }
+      body::after {
+        background-image:
+          linear-gradient(to right, var(--grid-line-strong) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--grid-line-strong) 1px, transparent 1px);
+        background-size: var(--grid-size) var(--grid-size);
+        background-position: center center;
+        -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 0%, transparent 38%);
+        mask-image: radial-gradient(circle at 50% 45%, #000 0%, transparent 38%);
+      }
+      .page {
+        position: relative;
+        z-index: 1;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .eyebrow {
+        margin: 0;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .eyebrow::before,
+      .eyebrow::after {
+        content: '';
+        display: inline-block;
+        width: 1.5rem;
+        height: 1px;
+        background: currentColor;
+        vertical-align: middle;
+        margin: 0 0.6rem;
+        opacity: 0.5;
+      }
+      .code {
+        margin: 0.75rem 0 0;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: clamp(3.5rem, 12vw, 6rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        color: var(--fg);
+      }
+      .title {
+        margin: 0.75rem 0 0;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        font-weight: 700;
+        color: var(--fg);
+      }
+      .lead {
+        margin: 0.5rem 0 0;
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.625rem;
+        margin-top: 1.5rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.4rem;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        border: 1px solid transparent;
+        background: var(--fg);
+        color: var(--bg);
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.08),
+          0 4px 12px -4px rgba(0, 0, 0, 0.18);
+        -webkit-tap-highlight-color: transparent;
+        transition:
+          background-color 150ms ease,
+          transform 150ms ease,
+          box-shadow 150ms ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.1),
+          0 8px 18px -6px rgba(0, 0, 0, 0.25);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .arrow {
+        display: inline-block;
+        transition: transform 120ms ease;
+      }
+      .btn:hover .arrow {
+        transform: translateX(2px);
+      }
+      :focus-visible {
+        outline: 2px solid var(--fg);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      ::selection {
+        background: var(--fg);
+        color: var(--bg);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section>
+        <p class="eyebrow">Ethics Violation</p>
+        <p class="code">404</p>
+        <h1 class="title">存在しないページを見るのは倫理違反です。</h1>
+        <p class="lead">技術者倫理を守って、来た道を引き返しましょう。</p>
+        <div class="actions">
+          <a class="btn" href="/">
+            <span>倫理を守る (ホームに戻る)</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
